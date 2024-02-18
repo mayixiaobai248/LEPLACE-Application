@@ -7,13 +7,13 @@ module.exports = (req, res, next) => {
     return next();
   }
   try {
-    const token = req.headers.authorization.split(' ')[1]; // Authorization: 'Bearer TOKEN'
+    const token = req.headers.authorization.split(' ')[1]; // 'Bearer TOKEN'
     if (!token) {
       throw new Error('Authentication failed!');
     }
     const decodedToken = jwt.verify(token, 'supersecret_dont_share');
     req.userData = { userId: decodedToken.userId };
-    next();
+    next();  //go ahead
   } catch (err) {
     const error = new HttpError('Authentication failed!', 403);
     return next(error);

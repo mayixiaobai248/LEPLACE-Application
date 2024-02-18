@@ -1,8 +1,8 @@
 const axios = require('axios');
 
 const HttpError = require('../models/http-error');
-
-const API_KEY = 'AIzaSyDgLmMpKCzveJf1_yuA0fUzzhy0WRChvZA';
+const API_KEY= 'AIzaSyCyrLj8R0hUIcvFdDTbh9axOHFaDf0GSXg';
+//const API_KEY = 'AIzaSyDgLmMpKCzveJf1_yuA0fUzzhy0WRChvZA';
 
 async function getCoordsForAddress(address) {
   // return {
@@ -25,6 +25,7 @@ async function getCoordsForAddress(address) {
     throw error;
   }
 
+  console.log(data)
   const coordinates = data.results[0].geometry.location;
 
   return coordinates;
